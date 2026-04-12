@@ -1,0 +1,69 @@
+# mapper_params_online_async.yaml — FIXED
+# ──────────────────────────────────────────────────────────────────────────────
+# BUG FIXES:
+#   1. 'mao_update_interval' → 'map_update_interval'  (typo — was silently ignored)
+#   2. stack_size_to_use: 4000000 → 40000000  (10x increase — prevents SLAM crash)
+#   3. resolution: 0.02 → 0.05  (less CPU lag on RPi, still good quality)
+#      Change back to 0.02 only if your computer is powerful enough
+#
+# SLAM subscribes to /odometry/filtered (from EKF), NOT /odom directly.
+# The EKF publishes the odom→base_link TF which SLAM reads automatically.
+# ──────────────────────────────────────────────────────────────────────────────
+
+slam_toolbox:
+  ros__parameters:
+
+    # 1. Mode
+    mode: mapping
+
+    # 2. Frames — MUST match URDF exactly
+    odom_frame:  odom
+    map_frame:   map
+    base_frame:  base_footprint   # matches URDF fixed joint base_footprint_joint
+    scan_topic:  /scan
+
+    # 3. Lidar specs (RPLIDAR A1)
+    max_laser_range: 10.0
+    laser_min_range: 0.15          # ignore very close readings (robot body reflections)
+    laser_max_range: 8.0
+
+    # 4. Timing — tuned for RPi / low-power SBC
+    minimum_time_interval: 0.3     # process a scan every 300ms (reduce lag)
+    transform_timeout: 0.5         # wait up to 500ms for TF (generous for micro-ROS)
+    tf_buffer_duration: 30.0
+
+    # 5. Memory — FIXED: was 4000000 (too small, causes crash on large maps)
+    stack_size_to_use: 40000000    # 40MB — standard recommendation
+
+    # 6. Scan buffer
+    scan_buffer_size: 40
+    scan_buffer_max_scan_distance: 1.0
+
+    # 7. Map resolution — FIXED: was 0.02 (very CPU heavy)
+    # 0.05 = 5cm/pixel — good quality, much less lag
+    # Change to 0.03 for better detail if CPU allows
+    resolution: 0.05
+
+    # 8. Map update timing — FIXED: was 'mao_update_interval' (typo)
+    map_update_interval: 0.5       # update map every 500ms
+
+    # 9. Quality gate
+    min_map_score: 0.6             # lowered from 0.8 — 0.8 was rejecting too many scans
+
+    # 10. Loop closure — "magic" of SLAM
+    do_loop_closure: true
+    loop_closure_search_radius: 8.0
+    loop_closure_minimum_confidence: 0.5
+    loop_match_max_distance: 0.8
+    loop_search_max_distance: 3.0
+    loop_match_min_chain_size: 10
+    loop_match_max_chain_size: 50
+
+    # 11. Scan matcher settings (helps with the "ray burst" at start)
+    # These control how aggressively SLAM corrects position from scan matching
+    use_scan_matching: true
+    use_scan_barycenter: true
+    minimum_travel_distance: 0.05  # only process scan if robot moved 5cm
+    minimum_travel_heading: 0.1    # or rotated 0.1 rad (~6 degrees)
+    # ↑ These two prevent SLAM from processing scans when robot is stationary
+    #   which is what causes the "ray burst" explosion at the starting position

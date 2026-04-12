@@ -1,0 +1,10 @@
+[bt_navigator-12] [INFO] [1775995082.514064980] [bt_navigator]: Begin navigating from current location (3.46, -2.10) to (3.46, -3.64)
+[controller_server-8] [INFO] [1775995082.535165779] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-8] [ERROR] [1775995082.836017805] [tf_help]: Transform data too old when converting from odom to map
+[controller_server-8] [ERROR] [1775995082.836211594] [tf_help]: Data time: 1775995082s 808672519ns, Transform time: 1775995082s 705804106ns
+[controller_server-8] [ERROR] [1775995082.836261343] [controller_server]: Unable to transform robot pose into global plan's frame
+[controller_server-8] [WARN] [1775995082.836362300] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[bt_navigator-12] [WARN] [1775995082.864242911] [bt_navigator]: [navigate_to_pose] [ActionServer] Aborting handle.
+[bt_navigator-12] [ERROR] [1775995082.864397909] [bt_navigator]: Goal failed
+[planner_server-10] [INFO] [1775995108.499921364] [global_costmap.global_costmap]: Message Filter dropping message: frame 'laser_frame' at time 1775995108.074 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+

@@ -1,0 +1,117 @@
+# ekf.yaml — FIXED
+# ──────────────────────────────────────────────────────────────────────────────
+# BUG FIXES:
+#   1. odom0_config yaw was 'false' → now 'true'  (EKF was ignoring odometry yaw!)
+#   2. two_d_mode was duplicated inside imu0 block → removed (YAML parse error)
+#   3. Covariance tuned for slow differential-drive robot with BNO055
+#
+# Pipeline:
+#   /joint_states → odometry_publisher.py → /odom ─┐
+#                                                    ├→ EKF → /odometry/filtered → SLAM
+#   BNO055 on ESP32 → /imu/data ────────────────────┘
+# ──────────────────────────────────────────────────────────────────────────────
+
+ekf_filter_node:
+  ros__parameters:
+
+    # ── Core settings ──────────────────────────────────────────────────────────
+    frequency: 10.0          # Hz — match your sensor publish rate (ESP32 publishes at 10Hz)
+    sensor_timeout: 0.2      # seconds — generous timeout for micro-ROS serial latency
+    two_d_mode: true         # flat floor robot — ignores Z, roll, pitch
+    publish_tf: true         # EKF owns the odom → base_link TF
+                             # odometry_publisher.py must NOT also broadcast this TF
+
+    # Frame IDs — must match URDF and SLAM config exactly
+    map_frame:       map
+    odom_frame:      odom
+    base_link_frame: base_link
+    world_frame:     odom    # keep 'odom' (not 'map') unless running AMCL alongside
+
+    # ── Input 0: Wheel odometry (/odom) ────────────────────────────────────────
+    # Provides: absolute x, y, yaw position + forward velocity vx + turn rate vyaw
+    odom0: /odom
+    #               x      y      z
+    #               roll   pitch  yaw    ← FIXED: was false, now true
+    #               vx     vy     vz
+    #               vroll  vpitch vyaw
+    #               ax     ay     az
+    odom0_config: [true,  true,  false,
+                   false, false, true,
+                   true,  false, false,
+                   false, false, true,
+                   false, false, false]
+
+    odom0_differential: false   # positions are absolute (integrated on ESP32)
+    odom0_relative:     false
+    odom0_queue_size:   5
+
+    # ── Input 1: BNO055 IMU (/imu/data) ────────────────────────────────────────
+    # Provides: fused yaw heading (NDOF mode) + gyro Z rate
+    # NOT providing acceleration — BNO055 accel is noisy for 2D ground robots
+    # imu0_remove_gravitational_acceleration handles the gravity component
+    imu0: /imu/data
+    #               x      y      z
+    #               roll   pitch  yaw    ← BNO055 fused heading (very reliable in NDOF)
+    #               vx     vy     vz
+    #               vroll  vpitch vyaw   ← gyro Z angular rate
+    #               ax     ay     az     ← disabled: noisy on ground robot
+    imu0_config: [false, false, false,
+                  false, false, true,
+                  false, false, false,
+                  false, false, true,
+                  false, false, false]
+
+    imu0_differential: false
+    imu0_relative:     false
+    imu0_queue_size:   10
+    imu0_remove_gravitational_acceleration: true
+
+    # Reject IMU readings that are too far from prediction (handles BNO055 startup spikes)
+    # Unit: Mahalanobis distance — 0.8 is fairly strict, increase to 1.5 if EKF rejects too much
+    imu0_pose_rejection_threshold:  0.8
+    imu0_twist_rejection_threshold: 0.8
+
+    # ── Slip/Instability Guard ──────────────────────────────────────────────────
+    # If robot is lifted (wheels spinning, IMU not moving), EKF will notice the
+    # contradiction between encoder velocity and zero IMU yaw change.
+    # The rejection thresholds above will cause EKF to trust IMU over encoders.
+    # This is the correct behaviour — no extra code needed for basic slip rejection.
+
+    # ── Process Noise Covariance Q (15×15) ─────────────────────────────────────
+    # Tuned for slow differential-drive robot (~0.3 m/s max)
+    # Higher diagonal = EKF trusts sensors more than model prediction
+    process_noise_covariance: [
+      0.05,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+      0.0,   0.05,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+      0.0,   0.0,   0.06,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+      0.0,   0.0,   0.0,   0.03,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+      0.0,   0.0,   0.0,   0.0,   0.03,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+      0.0,   0.0,   0.0,   0.0,   0.0,   0.02,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+      0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.025, 0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+      0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.025, 0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+      0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.04,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+      0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.01,  0.0,   0.0,   0.0,   0.0,   0.0,
+      0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.01,  0.0,   0.0,   0.0,   0.0,
+      0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.02,  0.0,   0.0,   0.0,
+      0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.01,  0.0,   0.0,
+      0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.01,  0.0,
+      0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.015
+    ]
+
+    initial_estimate_covariance: [
+      1.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  1.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  1.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  1.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  1.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  1.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1.0
+    ]
