@@ -24,13 +24,13 @@ slam_toolbox:
 
     # 3. Lidar specs (RPLIDAR A1)
     max_laser_range: 10.0
-    laser_min_range: 0.15          # ignore very close readings (robot body reflections)
+    laser_min_range: 0.3          # ignore very close readings (robot body reflections)
     laser_max_range: 8.0
 
     # 4. Timing — tuned for RPi / low-power SBC
-    minimum_time_interval: 0.3     # process a scan every 300ms (reduce lag)
+    minimum_time_interval: 0.5     # process a scan every 300ms (reduce lag)
     transform_timeout: 0.5         # wait up to 500ms for TF (generous for micro-ROS)
-    tf_buffer_duration: 30.0
+    tf_buffer_duration: 60.0
 
     # 5. Memory — FIXED: was 4000000 (too small, causes crash on large maps)
     stack_size_to_use: 40000000    # 40MB — standard recommendation
