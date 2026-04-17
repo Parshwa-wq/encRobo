@@ -1,0 +1,515 @@
+pasu@parshwa-wq:~/ROS/encRobo$ ros2 launch enc navigation.launch.py 
+[INFO] [launch]: All log files can be found below /home/pasu/.ros/log/2026-04-17-19-25-55-990046-parshwa-wq-102077
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [robot_state_publisher-1]: process started with pid [102080]
+[INFO] [map_server-2]: process started with pid [102081]
+[INFO] [amcl-3]: process started with pid [102082]
+[INFO] [lifecycle_manager-4]: process started with pid [102083]
+[lifecycle_manager-4] [INFO] [1776453956.287462755] [lifecycle_manager_localization]: Creating
+[lifecycle_manager-4] [INFO] [1776453956.314190461] [lifecycle_manager_localization]: Creating and initializing lifecycle service clients
+[map_server-2] [INFO] [1776453956.318466729] [map_server]: 
+[map_server-2] 	map_server lifecycle node launched. 
+[map_server-2] 	Waiting on external lifecycle transitions to activate
+[map_server-2] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[map_server-2] [INFO] [1776453956.318616029] [map_server]: Creating
+[amcl-3] [INFO] [1776453956.319732630] [amcl]: 
+[amcl-3] 	amcl lifecycle node launched. 
+[amcl-3] 	Waiting on external lifecycle transitions to activate
+[amcl-3] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[amcl-3] [INFO] [1776453956.321046824] [amcl]: Creating
+[robot_state_publisher-1] [INFO] [1776453956.326818713] [robot_state_publisher]: Robot initialized
+[lifecycle_manager-4] [INFO] [1776453956.499213672] [lifecycle_manager_localization]: Starting managed nodes bringup...
+[lifecycle_manager-4] [INFO] [1776453956.499278092] [lifecycle_manager_localization]: Configuring map_server
+[map_server-2] [INFO] [1776453956.499653779] [map_server]: Configuring
+[map_server-2] [INFO] [1776453956.499716949] [map_io]: Loading yaml file: /home/pasu/my_map.yaml
+[map_server-2] [INFO] [1776453956.502222581] [map_io]: resolution: 0.05
+[map_server-2] [INFO] [1776453956.502231999] [map_io]: origin[0]: -5.639
+[map_server-2] [INFO] [1776453956.502235124] [map_io]: origin[1]: -10.693
+[map_server-2] [INFO] [1776453956.502237582] [map_io]: origin[2]: 0
+[map_server-2] [INFO] [1776453956.502239916] [map_io]: free_thresh: 0.196
+[map_server-2] [INFO] [1776453956.502241999] [map_io]: occupied_thresh: 0.65
+[map_server-2] [INFO] [1776453956.502244708] [map_io]: mode: trinary
+[map_server-2] [INFO] [1776453956.502247624] [map_io]: negate: 0
+[map_server-2] [INFO] [1776453956.509938698] [map_io]: Loading image_file: /home/pasu/my_map.pgm
+[map_server-2] [INFO] [1776453956.514060916] [map_io]: Read map /home/pasu/my_map.pgm: 249 X 428 map @ 0.05 m/cell
+[lifecycle_manager-4] [INFO] [1776453956.524793985] [lifecycle_manager_localization]: Configuring amcl
+[amcl-3] [INFO] [1776453956.525006413] [amcl]: Configuring
+[amcl-3] [INFO] [1776453956.525076041] [amcl]: initTransforms
+[amcl-3] [INFO] [1776453956.533476278] [amcl]: initPubSub
+[amcl-3] [INFO] [1776453956.543676651] [amcl]: Subscribed to map topic.
+[lifecycle_manager-4] [INFO] [1776453956.547313427] [lifecycle_manager_localization]: Activating map_server
+[map_server-2] [INFO] [1776453956.547421099] [map_server]: Activating
+[amcl-3] [INFO] [1776453956.548293895] [amcl]: Received a 249 X 428 map @ 0.050 m/pix
+[map_server-2] [INFO] [1776453956.548949722] [map_server]: Creating bond (map_server) to lifecycle manager.
+[lifecycle_manager-4] [INFO] [1776453956.657741856] [lifecycle_manager_localization]: Server map_server connected with bond.
+[lifecycle_manager-4] [INFO] [1776453956.657778983] [lifecycle_manager_localization]: Activating amcl
+[amcl-3] [INFO] [1776453956.658253758] [amcl]: Activating
+[amcl-3] [INFO] [1776453956.658287551] [amcl]: initialPoseReceived
+[amcl-3] [INFO] [1776453956.658422058] [amcl]: Setting pose (1776453956.658421): 0.000 0.000 0.000
+[amcl-3] [INFO] [1776453956.658758201] [amcl]: Creating bond (amcl) to lifecycle manager.
+[lifecycle_manager-4] [INFO] [1776453956.764539301] [lifecycle_manager_localization]: Server amcl connected with bond.
+[lifecycle_manager-4] [INFO] [1776453956.764578886] [lifecycle_manager_localization]: Managed nodes are active
+[lifecycle_manager-4] [INFO] [1776453956.764585387] [lifecycle_manager_localization]: Creating bond timer...
+[INFO] [odometry_publisher.py-5]: process started with pid [102145]
+[odometry_publisher.py-5] [INFO] [1776453958.572542092] [odometry_publisher]: TF broadcasting DISABLED - assuming EKF publishes odom→base_link
+[odometry_publisher.py-5] [INFO] [1776453958.586536625] [odometry_publisher]: OdometryPublisher started:
+[odometry_publisher.py-5]   wheel_radius:     0.0450 m
+[odometry_publisher.py-5]   wheel_separation: 0.3640 m
+[odometry_publisher.py-5]   tilt_guard:       8.0°
+[odometry_publisher.py-5]   publish_tf:       False
+[INFO] [ekf_node-6]: process started with pid [102160]
+[INFO] [sllidar_node-7]: process started with pid [102176]
+[sllidar_node-7] [INFO] [1776453959.186263164] [sllidar_node]: SLLidar running on ROS2 package SLLidar.ROS2 SDK Version:1.0.1, SLLIDAR SDK Version:2.1.0
+[sllidar_node-7] [INFO] [1776453959.195711039] [sllidar_node]: SLLidar S/N: 84FEFA89C7E19EC8BCE499F00F295670
+[sllidar_node-7] [INFO] [1776453959.195746749] [sllidar_node]: Firmware Ver: 1.29
+[sllidar_node-7] [INFO] [1776453959.195751041] [sllidar_node]: Hardware Rev: 7
+[sllidar_node-7] [INFO] [1776453959.197245578] [sllidar_node]: SLLidar health status : 0
+[sllidar_node-7] [INFO] [1776453959.197261413] [sllidar_node]: SLLidar health status : OK.
+[sllidar_node-7] [INFO] [1776453959.439132758] [sllidar_node]: current scan mode: Sensitivity, sample rate: 8 Khz, max_distance: 12.0 m, scan frequency:10.0 Hz, 
+[INFO] [controller_server-8]: process started with pid [102193]
+[INFO] [smoother_server-9]: process started with pid [102194]
+[INFO] [planner_server-10]: process started with pid [102195]
+[INFO] [behavior_server-11]: process started with pid [102196]
+[INFO] [bt_navigator-12]: process started with pid [102197]
+[INFO] [waypoint_follower-13]: process started with pid [102198]
+[INFO] [velocity_smoother-14]: process started with pid [102199]
+[INFO] [collision_monitor-15]: process started with pid [102200]
+[behavior_server-11] [INFO] [1776453961.434813859] [behavior_server]: 
+[behavior_server-11] 	behavior_server lifecycle node launched. 
+[behavior_server-11] 	Waiting on external lifecycle transitions to activate
+[behavior_server-11] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[velocity_smoother-14] [INFO] [1776453961.441716933] [velocity_smoother]: 
+[velocity_smoother-14] 	velocity_smoother lifecycle node launched. 
+[velocity_smoother-14] 	Waiting on external lifecycle transitions to activate
+[velocity_smoother-14] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-8] [INFO] [1776453961.471254914] [controller_server]: 
+[controller_server-8] 	controller_server lifecycle node launched. 
+[controller_server-8] 	Waiting on external lifecycle transitions to activate
+[controller_server-8] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-8] [INFO] [1776453961.487278137] [controller_server]: Creating controller server
+[waypoint_follower-13] [INFO] [1776453961.493409128] [waypoint_follower]: 
+[waypoint_follower-13] 	waypoint_follower lifecycle node launched. 
+[waypoint_follower-13] 	Waiting on external lifecycle transitions to activate
+[waypoint_follower-13] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[waypoint_follower-13] [INFO] [1776453961.524657782] [waypoint_follower]: Creating
+[planner_server-10] [INFO] [1776453961.537560423] [planner_server]: 
+[planner_server-10] 	planner_server lifecycle node launched. 
+[planner_server-10] 	Waiting on external lifecycle transitions to activate
+[planner_server-10] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-10] [INFO] [1776453961.549612936] [planner_server]: Creating
+[smoother_server-9] [INFO] [1776453961.637036564] [smoother_server]: 
+[smoother_server-9] 	smoother_server lifecycle node launched. 
+[smoother_server-9] 	Waiting on external lifecycle transitions to activate
+[smoother_server-9] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[smoother_server-9] [INFO] [1776453961.649233627] [smoother_server]: Creating smoother server
+[controller_server-8] [INFO] [1776453961.657186881] [local_costmap.local_costmap]: 
+[controller_server-8] 	local_costmap lifecycle node launched. 
+[controller_server-8] 	Waiting on external lifecycle transitions to activate
+[controller_server-8] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-8] [INFO] [1776453961.664056828] [local_costmap.local_costmap]: Creating Costmap
+[collision_monitor-15] [INFO] [1776453961.701321676] [collision_monitor]: 
+[collision_monitor-15] 	collision_monitor lifecycle node launched. 
+[collision_monitor-15] 	Waiting on external lifecycle transitions to activate
+[collision_monitor-15] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[bt_navigator-12] [INFO] [1776453961.714420202] [bt_navigator]: 
+[bt_navigator-12] 	bt_navigator lifecycle node launched. 
+[bt_navigator-12] 	Waiting on external lifecycle transitions to activate
+[bt_navigator-12] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-10] [INFO] [1776453961.715554762] [global_costmap.global_costmap]: 
+[planner_server-10] 	global_costmap lifecycle node launched. 
+[planner_server-10] 	Waiting on external lifecycle transitions to activate
+[planner_server-10] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-10] [INFO] [1776453961.716078748] [global_costmap.global_costmap]: Creating Costmap
+[bt_navigator-12] [INFO] [1776453961.721664211] [bt_navigator]: Creating
+[amcl-3] [INFO] [1776453961.777573295] [amcl]: createLaserObject
+[INFO] [lifecycle_manager-16]: process started with pid [102317]
+[lifecycle_manager-16] [INFO] [1776453968.203772306] [lifecycle_manager_navigation]: Creating
+[lifecycle_manager-16] [INFO] [1776453968.207511462] [lifecycle_manager_navigation]: Creating and initializing lifecycle service clients
+[INFO] [slip_detector.py-17]: process started with pid [102333]
+[slip_detector.py-17] [INFO] [1776453970.132512697] [slip_detector]: SlipDetector ready with thresholds:
+[slip_detector.py-17]   MIN_WHEEL_MOVEMENT: 0.100 rad
+[slip_detector.py-17]   ASYMMETRY_THRESHOLD: 0.150 rad
+[slip_detector.py-17]   YAW_THRESHOLD: 0.0100 rad
+[slip_detector.py-17]   CONFIRMATION_COUNT: 3
+[slip_detector.py-17]   COOLDOWN: 3.0 sec
+[lifecycle_manager-16] [INFO] [1776453971.485612699] [lifecycle_manager_navigation]: Starting managed nodes bringup...
+[lifecycle_manager-16] [INFO] [1776453971.485653910] [lifecycle_manager_navigation]: Configuring controller_server
+[controller_server-8] [INFO] [1776453971.486447035] [controller_server]: Configuring controller interface
+[controller_server-8] [INFO] [1776453971.486475995] [controller_server]: getting progress checker plugins..
+[controller_server-8] [INFO] [1776453971.486643379] [controller_server]: getting goal checker plugins..
+[controller_server-8] [INFO] [1776453971.486673547] [controller_server]: Controller frequency set to 10.0000Hz
+[controller_server-8] [INFO] [1776453971.486711383] [local_costmap.local_costmap]: Configuring
+[controller_server-8] [INFO] [1776453971.504208226] [local_costmap.local_costmap]: Using plugin "voxel_layer"
+[controller_server-8] [INFO] [1776453971.530406946] [local_costmap.local_costmap]: Subscribed to Topics: scan
+[controller_server-8] [INFO] [1776453971.551089832] [local_costmap.local_costmap]: Initialized plugin "voxel_layer"
+[controller_server-8] [INFO] [1776453971.551122709] [local_costmap.local_costmap]: Using plugin "inflation_layer"
+[controller_server-8] [INFO] [1776453971.555334307] [local_costmap.local_costmap]: Initialized plugin "inflation_layer"
+[controller_server-8] [INFO] [1776453971.623123312] [controller_server]: Created progress_checker : progress_checker of type nav2_controller::SimpleProgressChecker
+[controller_server-8] [INFO] [1776453971.625443727] [controller_server]: Controller Server has progress_checker  progress checkers available.
+[controller_server-8] [INFO] [1776453971.626592371] [controller_server]: Created goal checker : general_goal_checker of type nav2_controller::SimpleGoalChecker
+[controller_server-8] [INFO] [1776453971.628509056] [controller_server]: Controller Server has general_goal_checker  goal checkers available.
+[controller_server-8] [INFO] [1776453971.629321223] [controller_server]: Created controller : FollowPath of type nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-8] [INFO] [1776453971.656112767] [controller_server]: Controller Server has FollowPath  controllers available.
+[lifecycle_manager-16] [INFO] [1776453971.683781065] [lifecycle_manager_navigation]: Configuring smoother_server
+[smoother_server-9] [INFO] [1776453971.684257257] [smoother_server]: Configuring smoother server
+[smoother_server-9] [INFO] [1776453971.749539587] [smoother_server]: Created smoother : simple_smoother of type nav2_smoother::SimpleSmoother
+[smoother_server-9] [INFO] [1776453971.754132664] [smoother_server]: Smoother Server has simple_smoother  smoothers available.
+[lifecycle_manager-16] [INFO] [1776453971.770333063] [lifecycle_manager_navigation]: Configuring planner_server
+[planner_server-10] [INFO] [1776453971.770747127] [planner_server]: Configuring
+[planner_server-10] [INFO] [1776453971.770803796] [global_costmap.global_costmap]: Configuring
+[planner_server-10] [INFO] [1776453971.808004266] [global_costmap.global_costmap]: Using plugin "static_layer"
+[planner_server-10] [INFO] [1776453971.817554146] [global_costmap.global_costmap]: Subscribing to the map topic (/map) with transient local durability
+[planner_server-10] [INFO] [1776453971.823161526] [global_costmap.global_costmap]: Initialized plugin "static_layer"
+[planner_server-10] [INFO] [1776453971.823186028] [global_costmap.global_costmap]: Using plugin "obstacle_layer"
+[planner_server-10] [INFO] [1776453971.825892463] [global_costmap.global_costmap]: Subscribed to Topics: scan
+[planner_server-10] [INFO] [1776453971.834836853] [global_costmap.global_costmap]: Initialized plugin "obstacle_layer"
+[planner_server-10] [INFO] [1776453971.834895647] [global_costmap.global_costmap]: Using plugin "inflation_layer"
+[planner_server-10] [INFO] [1776453971.855705207] [global_costmap.global_costmap]: Initialized plugin "inflation_layer"
+[planner_server-10] [INFO] [1776453971.891092456] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 249 X 428 at 0.050000 m/pix
+[planner_server-10] [INFO] [1776453971.893886854] [planner_server]: Created global planner plugin GridBased of type nav2_navfn_planner::NavfnPlanner
+[planner_server-10] [INFO] [1776453971.893917939] [planner_server]: Configuring plugin GridBased of type NavfnPlanner
+[planner_server-10] [INFO] [1776453971.895027289] [planner_server]: Planner Server has GridBased  planners available.
+[lifecycle_manager-16] [INFO] [1776453971.956540503] [lifecycle_manager_navigation]: Configuring behavior_server
+[behavior_server-11] [INFO] [1776453971.956839061] [behavior_server]: Configuring
+[behavior_server-11] [INFO] [1776453971.976955251] [behavior_server]: Creating behavior plugin spin of type nav2_behaviors::Spin
+[behavior_server-11] [INFO] [1776453971.980582109] [behavior_server]: Creating behavior plugin backup of type nav2_behaviors::BackUp
+[behavior_server-11] [INFO] [1776453971.986426586] [behavior_server]: Creating behavior plugin drive_on_heading of type nav2_behaviors::DriveOnHeading
+[behavior_server-11] [INFO] [1776453971.989125603] [behavior_server]: Creating behavior plugin assisted_teleop of type nav2_behaviors::AssistedTeleop
+[behavior_server-11] [INFO] [1776453971.999529654] [behavior_server]: Creating behavior plugin wait of type nav2_behaviors::Wait
+[behavior_server-11] [INFO] [1776453972.024804617] [behavior_server]: Configuring spin
+[behavior_server-11] [INFO] [1776453972.052609006] [behavior_server]: Configuring backup
+[behavior_server-11] [INFO] [1776453972.066035633] [behavior_server]: Configuring drive_on_heading
+[behavior_server-11] [INFO] [1776453972.090188995] [behavior_server]: Configuring assisted_teleop
+[behavior_server-11] [INFO] [1776453972.122356739] [behavior_server]: Configuring wait
+[lifecycle_manager-16] [INFO] [1776453972.145809773] [lifecycle_manager_navigation]: Configuring bt_navigator
+[bt_navigator-12] [INFO] [1776453972.148175690] [bt_navigator]: Configuring
+[bt_navigator-12] [INFO] [1776453972.167403957] [bt_navigator]: Creating navigator id navigate_to_pose of type nav2_bt_navigator::NavigateToPoseNavigator
+[bt_navigator-12] [INFO] [1776453972.348182485] [bt_navigator]: Creating navigator id navigate_through_poses of type nav2_bt_navigator::NavigateThroughPosesNavigator
+[lifecycle_manager-16] [INFO] [1776453972.397850531] [lifecycle_manager_navigation]: Configuring waypoint_follower
+[waypoint_follower-13] [INFO] [1776453972.398113879] [waypoint_follower]: Configuring
+[waypoint_follower-13] [INFO] [1776453972.462119725] [waypoint_follower]: Created waypoint_task_executor : wait_at_waypoint of type nav2_waypoint_follower::WaitAtWaypoint
+[lifecycle_manager-16] [INFO] [1776453972.470399747] [lifecycle_manager_navigation]: Configuring velocity_smoother
+[velocity_smoother-14] [INFO] [1776453972.470739765] [velocity_smoother]: Configuring velocity smoother
+[lifecycle_manager-16] [INFO] [1776453972.480479322] [lifecycle_manager_navigation]: Configuring collision_monitor
+[collision_monitor-15] [INFO] [1776453972.482037279] [collision_monitor]: Configuring
+[collision_monitor-15] [INFO] [1776453972.507371412] [collision_monitor]: [scan]: Creating Scan
+[collision_monitor-15] [INFO] [1776453972.514035057] [collision_monitor]: [FootprintApproach]: Creating Polygon
+[collision_monitor-15] [INFO] [1776453972.517825091] [collision_monitor]: [FootprintApproach]: Polygon points are not defined. Using dynamic subscription instead.
+[collision_monitor-15] [INFO] [1776453972.533095441] [collision_monitor]: [FootprintApproach]: Making footprint subscriber on /local_costmap/published_footprint topic
+[lifecycle_manager-16] [INFO] [1776453972.590566025] [lifecycle_manager_navigation]: Activating controller_server
+[controller_server-8] [INFO] [1776453972.590767410] [controller_server]: Activating
+[controller_server-8] [INFO] [1776453972.590811413] [local_costmap.local_costmap]: Activating
+[controller_server-8] [INFO] [1776453972.590818871] [local_costmap.local_costmap]: Checking transform
+[controller_server-8] [INFO] [1776453972.590972879] [local_costmap.local_costmap]: start
+[controller_server-8] [INFO] [1776453972.842090673] [controller_server]: Activating controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-8] [INFO] [1776453972.842155259] [controller_server]: Creating bond (controller_server) to lifecycle manager.
+[lifecycle_manager-16] [INFO] [1776453972.954726635] [lifecycle_manager_navigation]: Server controller_server connected with bond.
+[lifecycle_manager-16] [INFO] [1776453972.954775221] [lifecycle_manager_navigation]: Activating smoother_server
+[smoother_server-9] [INFO] [1776453972.955728063] [smoother_server]: Activating
+[smoother_server-9] [INFO] [1776453972.955773190] [smoother_server]: Creating bond (smoother_server) to lifecycle manager.
+[lifecycle_manager-16] [INFO] [1776453973.064669788] [lifecycle_manager_navigation]: Server smoother_server connected with bond.
+[lifecycle_manager-16] [INFO] [1776453973.064708249] [lifecycle_manager_navigation]: Activating planner_server
+[planner_server-10] [INFO] [1776453973.065471039] [planner_server]: Activating
+[planner_server-10] [INFO] [1776453973.065510041] [global_costmap.global_costmap]: Activating
+[planner_server-10] [INFO] [1776453973.065516416] [global_costmap.global_costmap]: Checking transform
+[planner_server-10] [INFO] [1776453973.065668133] [global_costmap.global_costmap]: start
+[planner_server-10] [INFO] [1776453974.118393735] [planner_server]: Activating plugin GridBased of type NavfnPlanner
+[planner_server-10] [INFO] [1776453974.122414614] [planner_server]: Creating bond (planner_server) to lifecycle manager.
+[lifecycle_manager-16] [INFO] [1776453974.242044405] [lifecycle_manager_navigation]: Server planner_server connected with bond.
+[lifecycle_manager-16] [INFO] [1776453974.242098117] [lifecycle_manager_navigation]: Activating behavior_server
+[behavior_server-11] [INFO] [1776453974.242357464] [behavior_server]: Activating
+[behavior_server-11] [INFO] [1776453974.242378715] [behavior_server]: Activating spin
+[behavior_server-11] [INFO] [1776453974.242395841] [behavior_server]: Activating backup
+[behavior_server-11] [INFO] [1776453974.242402841] [behavior_server]: Activating drive_on_heading
+[behavior_server-11] [INFO] [1776453974.242409383] [behavior_server]: Activating assisted_teleop
+[behavior_server-11] [INFO] [1776453974.242415008] [behavior_server]: Activating wait
+[behavior_server-11] [INFO] [1776453974.242422967] [behavior_server]: Creating bond (behavior_server) to lifecycle manager.
+[lifecycle_manager-16] [INFO] [1776453974.357777490] [lifecycle_manager_navigation]: Server behavior_server connected with bond.
+[lifecycle_manager-16] [INFO] [1776453974.357827410] [lifecycle_manager_navigation]: Activating bt_navigator
+[bt_navigator-12] [INFO] [1776453974.358282184] [bt_navigator]: Activating
+[bt_navigator-12] [INFO] [1776453974.526800063] [bt_navigator]: Creating bond (bt_navigator) to lifecycle manager.
+[lifecycle_manager-16] [INFO] [1776453974.639268891] [lifecycle_manager_navigation]: Server bt_navigator connected with bond.
+[lifecycle_manager-16] [INFO] [1776453974.639318269] [lifecycle_manager_navigation]: Activating waypoint_follower
+[waypoint_follower-13] [INFO] [1776453974.639695372] [waypoint_follower]: Activating
+[waypoint_follower-13] [INFO] [1776453974.639726499] [waypoint_follower]: Creating bond (waypoint_follower) to lifecycle manager.
+[lifecycle_manager-16] [INFO] [1776453974.750940969] [lifecycle_manager_navigation]: Server waypoint_follower connected with bond.
+[lifecycle_manager-16] [INFO] [1776453974.750989639] [lifecycle_manager_navigation]: Activating velocity_smoother
+[velocity_smoother-14] [INFO] [1776453974.751680175] [velocity_smoother]: Activating
+[velocity_smoother-14] [INFO] [1776453974.751743262] [velocity_smoother]: Creating bond (velocity_smoother) to lifecycle manager.
+[lifecycle_manager-16] [INFO] [1776453974.861739710] [lifecycle_manager_navigation]: Server velocity_smoother connected with bond.
+[lifecycle_manager-16] [INFO] [1776453974.861767128] [lifecycle_manager_navigation]: Activating collision_monitor
+[collision_monitor-15] [INFO] [1776453974.862767389] [collision_monitor]: Activating
+[collision_monitor-15] [INFO] [1776453974.862801349] [collision_monitor]: Creating bond (collision_monitor) to lifecycle manager.
+[lifecycle_manager-16] [INFO] [1776453974.977502838] [lifecycle_manager_navigation]: Server collision_monitor connected with bond.
+[lifecycle_manager-16] [INFO] [1776453974.977542298] [lifecycle_manager_navigation]: Managed nodes are active
+[lifecycle_manager-16] [INFO] [1776453974.977730433] [lifecycle_manager_navigation]: Creating bond timer...
+[ekf_node-6] [ERROR] [1776454124.647487480] [ekf_filter_node]: Failed to meet update rate! Took 0.20956484599999999907seconds. Try decreasing the rate, limiting sensor output frequency, or limiting the number of sensors.
+[ekf_node-6] [ERROR] [1776454158.975920906] [ekf_filter_node]: Failed to meet update rate! Took 0.020723524000000000111seconds. Try decreasing the rate, limiting sensor output frequency, or limiting the number of sensors.
+[odometry_publisher.py-5] [WARN] [1776454172.729422817] [odometry_publisher]: Large dt detected: 1.907s - skipping update
+[odometry_publisher.py-5] [WARN] [1776454176.037424768] [odometry_publisher]: Large dt detected: 1.224s - skipping update
+[odometry_publisher.py-5] [WARN] [1776454178.296023894] [odometry_publisher]: Large dt detected: 2.101s - skipping update
+[odometry_publisher.py-5] [WARN] [1776454181.351577511] [odometry_publisher]: Large dt detected: 2.054s - skipping update
+[odometry_publisher.py-5] [WARN] [1776454187.305914541] [odometry_publisher]: Large dt detected: 2.713s - skipping update
+[ekf_node-6] [ERROR] [1776454209.339533413] [ekf_filter_node]: Failed to meet update rate! Took 0.081540530999999999429seconds. Try decreasing the rate, limiting sensor output frequency, or limiting the number of sensors.
+[odometry_publisher.py-5] [WARN] [1776454209.791304477] [odometry_publisher]: Large dt detected: 1.480s - skipping update
+[odometry_publisher.py-5] [WARN] [1776454214.858888587] [odometry_publisher]: Large dt detected: 4.160s - skipping update
+[amcl-3] [INFO] [1776454233.924591122] [amcl]: initialPoseReceived
+[amcl-3] [WARN] [1776454233.925569975] [amcl]: Failed to transform initial pose in time (Lookup would require extrapolation into the future.  Requested time 1776454233.925476 but the latest data is at time 1776454233.537495, when looking up transform from frame [base_footprint] to frame [odom])
+[amcl-3] [INFO] [1776454233.925599559] [amcl]: Setting pose (1776454233.925599): 3.440 -1.590 2.150
+[amcl-3] [INFO] [1776454247.370752430] [amcl]: initialPoseReceived
+[amcl-3] [WARN] [1776454247.370824973] [amcl]: Failed to transform initial pose in time (Lookup would require extrapolation into the future.  Requested time 1776454247.370793 but the latest data is at time 1776454247.136901, when looking up transform from frame [base_footprint] to frame [odom])
+[amcl-3] [INFO] [1776454247.370833932] [amcl]: Setting pose (1776454247.370834): 2.780 -1.550 2.601
+[amcl-3] [INFO] [1776454254.656586717] [amcl]: initialPoseReceived
+[amcl-3] [WARN] [1776454254.656873348] [amcl]: Failed to transform initial pose in time (Lookup would require extrapolation into the future.  Requested time 1776454254.656815 but the latest data is at time 1776454254.376988, when looking up transform from frame [base_footprint] to frame [odom])
+[amcl-3] [INFO] [1776454254.656889890] [amcl]: Setting pose (1776454254.656889): 2.760 -1.450 2.396
+[amcl-3] [INFO] [1776454262.320105363] [amcl]: initialPoseReceived
+[amcl-3] [WARN] [1776454262.320177865] [amcl]: Failed to transform initial pose in time (Lookup would require extrapolation into the future.  Requested time 1776454262.320143 but the latest data is at time 1776454262.236770, when looking up transform from frame [base_footprint] to frame [odom])
+[amcl-3] [INFO] [1776454262.320188865] [amcl]: Setting pose (1776454262.320188): 2.700 -1.450 2.400
+[odometry_publisher.py-5] [WARN] [1776454394.631078295] [odometry_publisher]: Large dt detected: 3.073s - skipping update
+[planner_server-10] [ERROR] [1776454409.070991701] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454398.376760, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454410.074094842] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454399.398889, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454411.083044873] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454400.437476, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454412.092010069] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454401.476756, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454413.096622232] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454402.481899, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454414.101189314] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454403.516775, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454415.104909389] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454404.537508, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454416.107049152] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454405.557146, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454417.121901694] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454406.576753, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454418.123557942] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454407.596752, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454419.124394026] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454408.616754, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454420.132904495] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454409.636756, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454421.139393987] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454410.638893, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454422.146054473] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454411.676754, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454423.151040899] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454412.696774, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454424.161697214] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454413.736768, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454425.162957502] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454414.756752, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454426.170178582] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454415.776756, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454427.171975756] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454416.796930, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454428.174421875] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454417.836752, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454429.177983886] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454418.856751, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454430.178974276] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454419.876755, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454431.183882079] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454420.897892, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454432.186058565] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454421.917090, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454433.191630284] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454422.937046, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454434.198589858] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454423.976751, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454435.207812046] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454424.976757, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454436.220749456] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454425.996753, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454437.230891018] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454427.016766, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454438.242903087] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454428.036753, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454439.245450910] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454428.536759, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454440.248323136] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454429.537212, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454441.259067003] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454430.556759, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454442.259779647] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454431.578898, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454443.267004071] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454432.596757, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454444.276182792] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454433.616753, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454445.287902368] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454434.636756, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454446.292901297] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454435.676941, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454447.301771030] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454436.696756, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454448.305906494] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454437.716772, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454449.315676731] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454438.756754, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454450.318969937] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454439.776753, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454451.329040454] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454440.797353, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454452.336617696] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454441.836886, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454453.343930699] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454442.856751, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454454.356238585] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454443.876752, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454455.361121185] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454444.896754, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454456.371591894] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454445.897881, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454457.398272118] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454446.936753, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454458.406227845] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454447.976760, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454459.406913156] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454448.996756, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [ERROR] [1776454460.411012580] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454450.016752, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+^C[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[ekf_node-6] [INFO] [1776454460.590992177] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[controller_server-8] [INFO] [1776454460.591592236] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[controller_server-8] [INFO] [1776454460.591780187] [controller_server]: Running Nav2 LifecycleNode rcl preshutdown (controller_server)
+[planner_server-10] [INFO] [1776454460.591965055] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[planner_server-10] [INFO] [1776454460.592066092] [planner_server]: Running Nav2 LifecycleNode rcl preshutdown (planner_server)
+[planner_server-10] [INFO] [1776454460.592399621] [planner_server]: Deactivating
+[planner_server-10] [INFO] [1776454460.592511158] [global_costmap.global_costmap]: Deactivating
+[lifecycle_manager-4] [INFO] [1776454460.592023886] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[lifecycle_manager-4] [INFO] [1776454460.592191462] [lifecycle_manager_localization]: Running Nav2 LifecycleManager rcl preshutdown (lifecycle_manager_localization)
+[lifecycle_manager-4] [INFO] [1776454460.592402662] [lifecycle_manager_localization]: Terminating bond timer...
+[velocity_smoother-14] [INFO] [1776454460.593021762] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[velocity_smoother-14] [INFO] [1776454460.593199547] [velocity_smoother]: Running Nav2 LifecycleNode rcl preshutdown (velocity_smoother)
+[velocity_smoother-14] [INFO] [1776454460.593422121] [velocity_smoother]: Deactivating
+[velocity_smoother-14] [INFO] [1776454460.593496702] [velocity_smoother]: Destroying bond (velocity_smoother) to lifecycle manager.
+[robot_state_publisher-1] [INFO] [1776454460.593541158] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[map_server-2] [INFO] [1776454460.594205173] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[map_server-2] [INFO] [1776454460.594341834] [map_server]: Running Nav2 LifecycleNode rcl preshutdown (map_server)
+[map_server-2] [INFO] [1776454460.594566492] [map_server]: Deactivating
+[map_server-2] [INFO] [1776454460.594604782] [map_server]: Destroying bond (map_server) to lifecycle manager.
+[smoother_server-9] [INFO] [1776454460.595256131] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[smoother_server-9] [INFO] [1776454460.595515079] [smoother_server]: Running Nav2 LifecycleNode rcl preshutdown (smoother_server)
+[smoother_server-9] [INFO] [1776454460.595740903] [smoother_server]: Deactivating
+[smoother_server-9] [INFO] [1776454460.595818817] [smoother_server]: Destroying bond (smoother_server) to lifecycle manager.
+[waypoint_follower-13] [INFO] [1776454460.596091847] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[waypoint_follower-13] [INFO] [1776454460.596230092] [waypoint_follower]: Running Nav2 LifecycleNode rcl preshutdown (waypoint_follower)
+[waypoint_follower-13] [INFO] [1776454460.596498539] [waypoint_follower]: Deactivating
+[waypoint_follower-13] [INFO] [1776454460.596582203] [waypoint_follower]: Destroying bond (waypoint_follower) to lifecycle manager.
+[lifecycle_manager-16] [INFO] [1776454460.597827777] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[lifecycle_manager-16] [INFO] [1776454460.598055268] [lifecycle_manager_navigation]: Running Nav2 LifecycleManager rcl preshutdown (lifecycle_manager_navigation)
+[lifecycle_manager-16] [INFO] [1776454460.598148931] [lifecycle_manager_navigation]: Terminating bond timer...
+[bt_navigator-12] [INFO] [1776454460.600847448] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[bt_navigator-12] [INFO] [1776454460.601038732] [bt_navigator]: Running Nav2 LifecycleNode rcl preshutdown (bt_navigator)
+[bt_navigator-12] [INFO] [1776454460.601280139] [bt_navigator]: Deactivating
+[bt_navigator-12] [INFO] [1776454460.604681752] [bt_navigator]: Destroying bond (bt_navigator) to lifecycle manager.
+[controller_server-8] [INFO] [1776454460.617685646] [controller_server]: Deactivating
+[controller_server-8] [INFO] [1776454460.617759809] [controller_server]: Deactivating controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-8] [INFO] [1776454460.617819349] [local_costmap.local_costmap]: Deactivating
+[controller_server-8] [INFO] [1776454460.639547850] [controller_server]: Destroying bond (controller_server) to lifecycle manager.
+[controller_server-8] [INFO] [1776454460.675597443] [controller_server]: Cleaning up
+[controller_server-8] [INFO] [1776454460.675634733] [controller_server]: Cleaning up controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-8] [INFO] [1776454460.675868932] [local_costmap.local_costmap]: Cleaning up
+[velocity_smoother-14] [INFO] [1776454460.634245438] [velocity_smoother]: Cleaning up
+[velocity_smoother-14] [INFO] [1776454460.634335393] [velocity_smoother]: Destroying bond (velocity_smoother) to lifecycle manager.
+[velocity_smoother-14] [INFO] [1776454460.667284902] [velocity_smoother]: Destroying
+[map_server-2] [INFO] [1776454460.626185054] [map_server]: Cleaning up
+[map_server-2] [INFO] [1776454460.626301258] [map_server]: Destroying bond (map_server) to lifecycle manager.
+[map_server-2] [INFO] [1776454460.737088262] [map_server]: Destroying
+[behavior_server-11] [INFO] [1776454460.609316274] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[behavior_server-11] [INFO] [1776454460.609537807] [behavior_server]: Running Nav2 LifecycleNode rcl preshutdown (behavior_server)
+[behavior_server-11] [INFO] [1776454460.610033162] [behavior_server]: Deactivating
+[behavior_server-11] [INFO] [1776454460.610463144] [behavior_server]: Destroying bond (behavior_server) to lifecycle manager.
+[behavior_server-11] [INFO] [1776454460.676581820] [behavior_server]: Cleaning up
+[behavior_server-11] [INFO] [1776454460.705839185] [behavior_server]: Destroying bond (behavior_server) to lifecycle manager.
+[amcl-3] [INFO] [1776454460.611371066] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[amcl-3] [INFO] [1776454460.611635431] [amcl]: Running Nav2 LifecycleNode rcl preshutdown (amcl)
+[amcl-3] [INFO] [1776454460.612195741] [amcl]: Deactivating
+[amcl-3] [INFO] [1776454460.612413774] [amcl]: Destroying bond (amcl) to lifecycle manager.
+[amcl-3] [INFO] [1776454460.693438559] [amcl]: Cleaning up
+[amcl-3] [INFO] [1776454460.782545810] [amcl]: Destroying bond (amcl) to lifecycle manager.
+[collision_monitor-15] [INFO] [1776454460.615345948] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[collision_monitor-15] [INFO] [1776454460.615489567] [collision_monitor]: Running Nav2 LifecycleNode rcl preshutdown (collision_monitor)
+[collision_monitor-15] [INFO] [1776454460.615689893] [collision_monitor]: Deactivating
+[collision_monitor-15] [INFO] [1776454460.615737891] [collision_monitor]: Destroying bond (collision_monitor) to lifecycle manager.
+[collision_monitor-15] [INFO] [1776454460.649769606] [collision_monitor]: Cleaning up
+[collision_monitor-15] [INFO] [1776454460.649828604] [collision_monitor]: [FootprintApproach]: Destroying Polygon
+[collision_monitor-15] [INFO] [1776454460.649853019] [collision_monitor]: [scan]: Destroying Scan
+[collision_monitor-15] [INFO] [1776454460.675464073] [collision_monitor]: Destroying bond (collision_monitor) to lifecycle manager.
+[collision_monitor-15] [INFO] [1776454460.751165154] [collision_monitor]: Destroying
+[odometry_publisher.py-5] [INFO] [1776454460.619476074] [odometry_publisher]: OdometryPublisher shutting down...
+[odometry_publisher.py-5] Failed to publish log message to rosout: publisher's context is invalid, at ./src/rcl/publisher.c:423
+[smoother_server-9] [INFO] [1776454460.652068222] [smoother_server]: Cleaning up
+[bt_navigator-12] [INFO] [1776454460.657435464] [bt_navigator]: Cleaning up
+[waypoint_follower-13] [INFO] [1776454460.658438841] [waypoint_follower]: Cleaning up
+[slip_detector.py-17] [INFO] [1776454460.680953311] [slip_detector]: SlipDetector shutting down...
+[slip_detector.py-17] Failed to publish log message to rosout: publisher's context is invalid, at ./src/rcl/publisher.c:423
+[lifecycle_manager-4] [INFO] [1776454460.829692622] [lifecycle_manager_localization]: Destroying lifecycle_manager_localization
+[smoother_server-9] [INFO] [1776454460.894454977] [smoother_server]: Destroying bond (smoother_server) to lifecycle manager.
+[amcl-3] [INFO] [1776454460.900017003] [amcl]: Destroying
+[smoother_server-9] [INFO] [1776454460.923483477] [smoother_server]: Destroying
+[controller_server-8] [INFO] [1776454461.055117351] [controller_server]: Destroying bond (controller_server) to lifecycle manager.
+[waypoint_follower-13] [INFO] [1776454461.062048989] [waypoint_follower]: Destroying bond (waypoint_follower) to lifecycle manager.
+[controller_server-8] [INFO] [1776454461.069093414] [local_costmap.local_costmap]: Destroying
+[waypoint_follower-13] [INFO] [1776454461.086763454] [waypoint_follower]: Destroying
+[lifecycle_manager-16] [INFO] [1776454461.199923238] [lifecycle_manager_navigation]: Destroying lifecycle_manager_navigation
+[controller_server-8] [INFO] [1776454461.203620173] [controller_server]: Destroying
+[behavior_server-11] [INFO] [1776454461.218164463] [behavior_server]: Destroying
+[INFO] [robot_state_publisher-1]: process has finished cleanly [pid 102080]
+[INFO] [velocity_smoother-14]: process has finished cleanly [pid 102199]
+[INFO] [lifecycle_manager-4]: process has finished cleanly [pid 102083]
+[INFO] [collision_monitor-15]: process has finished cleanly [pid 102200]
+[INFO] [map_server-2]: process has finished cleanly [pid 102081]
+[planner_server-10] [ERROR] [1776454461.418953557] [transformPoseInTargetFrame]: Extrapolation Error looking up target frame: Lookup would require extrapolation into the past.  Requested time 1776454396.808988 but the earliest data is at time 1776454450.016752, when looking up transform from frame [base_link] to frame [map]
+[planner_server-10] 
+[planner_server-10] [INFO] [1776454461.422932314] [planner_server]: Deactivating plugin GridBased of type NavfnPlanner
+[planner_server-10] [INFO] [1776454461.423045309] [planner_server]: Destroying bond (planner_server) to lifecycle manager.
+[planner_server-10] [INFO] [1776454461.434982996] [planner_server]: Cleaning up
+[INFO] [ekf_node-6]: process has finished cleanly [pid 102160]
+[INFO] [smoother_server-9]: process has finished cleanly [pid 102194]
+[INFO] [amcl-3]: process has finished cleanly [pid 102082]
+[INFO] [lifecycle_manager-16]: process has finished cleanly [pid 102317]
+[INFO] [waypoint_follower-13]: process has finished cleanly [pid 102198]
+[INFO] [controller_server-8]: process has finished cleanly [pid 102193]
+[planner_server-10] [INFO] [1776454461.636417606] [global_costmap.global_costmap]: Cleaning up
+[INFO] [behavior_server-11]: process has finished cleanly [pid 102196]
+[bt_navigator-12] [INFO] [1776454461.676711903] [bt_navigator]: Completed Cleaning up
+[bt_navigator-12] [INFO] [1776454461.676801733] [bt_navigator]: Destroying bond (bt_navigator) to lifecycle manager.
+[planner_server-10] [INFO] [1776454461.704723110] [planner_server]: Cleaning up plugin GridBased of type NavfnPlanner
+[planner_server-10] [INFO] [1776454461.704957601] [planner_server]: Destroying plugin GridBased of type NavfnPlanner
+[bt_navigator-12] [INFO] [1776454461.748647261] [bt_navigator]: Destroying
+[planner_server-10] [INFO] [1776454461.787179128] [planner_server]: Destroying bond (planner_server) to lifecycle manager.
+[planner_server-10] [INFO] [1776454461.822735157] [global_costmap.global_costmap]: Destroying
+[odometry_publisher.py-5] Traceback (most recent call last):
+[odometry_publisher.py-5]   File "/home/pasu/ROS/encRobo/install/enc/lib/enc/odometry_publisher.py", line 282, in <module>
+[planner_server-10] [INFO] [1776454461.861466058] [planner_server]: Destroying
+[odometry_publisher.py-5]     main()
+[odometry_publisher.py-5]   File "/home/pasu/ROS/encRobo/install/enc/lib/enc/odometry_publisher.py", line 278, in main
+[odometry_publisher.py-5]     rclpy.shutdown()
+[odometry_publisher.py-5]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 134, in shutdown
+[odometry_publisher.py-5]     _shutdown(context=context)
+[odometry_publisher.py-5]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/utilities.py", line 82, in shutdown
+[odometry_publisher.py-5]     context.shutdown()
+[odometry_publisher.py-5]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/context.py", line 129, in shutdown
+[odometry_publisher.py-5]     self.__context.shutdown()
+[odometry_publisher.py-5] rclpy._rclpy_pybind11.RCLError: failed to shutdown: rcl_shutdown already called on the given context, at ./src/rcl/init.c:333
+[slip_detector.py-17] Traceback (most recent call last):
+[slip_detector.py-17]   File "/home/pasu/ROS/encRobo/install/enc/lib/enc/slip_detector.py", line 213, in <module>
+[slip_detector.py-17]     main()
+[slip_detector.py-17]   File "/home/pasu/ROS/encRobo/install/enc/lib/enc/slip_detector.py", line 209, in main
+[slip_detector.py-17]     rclpy.shutdown()
+[slip_detector.py-17]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 134, in shutdown
+[slip_detector.py-17]     _shutdown(context=context)
+[slip_detector.py-17]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/utilities.py", line 82, in shutdown
+[slip_detector.py-17]     context.shutdown()
+[slip_detector.py-17]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/context.py", line 129, in shutdown
+[slip_detector.py-17]     self.__context.shutdown()
+[slip_detector.py-17] rclpy._rclpy_pybind11.RCLError: failed to shutdown: rcl_shutdown already called on the given context, at ./src/rcl/init.c:333
+[INFO] [bt_navigator-12]: process has finished cleanly [pid 102197]
+[INFO] [planner_server-10]: process has finished cleanly [pid 102195]
+[sllidar_node-7] [INFO] [1776454462.062242778] [sllidar_node]: Stop motor
+[INFO] [sllidar_node-7]: process has finished cleanly [pid 102176]
+[ERROR] [slip_detector.py-17]: process has died [pid 102333, exit code 1, cmd '/home/pasu/ROS/encRobo/install/enc/lib/enc/slip_detector.py --ros-args -r __node:=slip_detector'].
+[ERROR] [odometry_publisher.py-5]: process has died [pid 102145, exit code 1, cmd '/home/pasu/ROS/encRobo/install/enc/lib/enc/odometry_publisher.py --ros-args -r __node:=odometry_publisher'].
