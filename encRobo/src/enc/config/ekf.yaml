@@ -15,11 +15,14 @@ ekf_filter_node:
   ros__parameters:
 
     # ── Core settings ──────────────────────────────────────────────────────────
-    frequency: 10.0          # Hz — match your sensor publish rate (ESP32 publishes at 10Hz)
-    sensor_timeout: 0.2      # seconds — generous timeout for micro-ROS serial latency
+    frequency: 20.0          # Hz — match your sensor publish rate (ESP32 publishes at 10Hz)
+    sensor_timeout: 0.5      # seconds — generous timeout for micro-ROS serial latency
     two_d_mode: true         # flat floor robot — ignores Z, roll, pitch
     publish_tf: true         # EKF owns the odom → base_link TF
-                             # odometry_publisher.py must NOT also broadcast this TF
+    publish_acceleration: false
+    use_sim_time: false
+    debug: false
+    smoothed_lagged_data: true
 
     # Frame IDs — must match URDF and SLAM config exactly
     map_frame:       map
@@ -37,7 +40,7 @@ ekf_filter_node:
     #               ax     ay     az
     odom0_config: [true,  true,  false,
                    false, false, true,
-                   true,  false, false,
+                   true,  true, false,
                    false, false, true,
                    false, false, false]
 
@@ -56,14 +59,14 @@ ekf_filter_node:
     #               vroll  vpitch vyaw   ← gyro Z angular rate
     #               ax     ay     az     ← disabled: noisy on ground robot
     imu0_config: [false, false, false,
-                  false, false, true,
+                  true, true, true,
                   false, false, false,
                   false, false, true,
                   false, false, false]
 
     imu0_differential: false
-    imu0_relative:     false
-    imu0_queue_size:   10
+    imu0_relative: false
+    imu0_queue_size: 5
     imu0_remove_gravitational_acceleration: true
 
     # Reject IMU readings that are too far from prediction (handles BNO055 startup spikes)
