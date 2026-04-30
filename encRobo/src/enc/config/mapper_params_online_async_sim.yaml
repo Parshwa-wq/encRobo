@@ -1,0 +1,65 @@
+# mapper_params_online_async_sim.yaml — SIMULATION VERSION
+# ──────────────────────────────────────────────────────────────────────────────
+# CHANGES FROM REAL ROBOT:
+#   1. max_laser_range: 10.0 → 12.0  (matches lidar.xacro <max>12</max>)
+#   2. laser_max_range: 8.0  → 11.0  (use almost full range)
+#   3. resolution: 0.05 → 0.03       (higher detail on powerful PC)
+#   4. minimum_time_interval: 0.5 → 0.3  (faster processing)
+#   5. transform_timeout: 0.5 → 0.2      (instant TF in sim)
+#   6. map_update_interval: 0.5 → 0.3    (faster map updates)
+#   7. Added use_sim_time: True
+# ──────────────────────────────────────────────────────────────────────────────
+
+slam_toolbox:
+  ros__parameters:
+
+    # 1. Mode
+    mode: mapping
+    use_sim_time: True          # ← ADDED
+
+    # 2. Frames — matches URDF exactly
+    odom_frame:  odom
+    map_frame:   map
+    base_frame:  base_footprint
+    scan_topic:  /scan
+
+    # 3. Lidar specs — SIM: perfect 12m lidar
+    max_laser_range: 12.0       # ← was 10.0
+    laser_min_range: 0.3
+    laser_max_range: 11.0       # ← was 8.0
+
+    # 4. Timing — SIM: more aggressive
+    minimum_time_interval: 0.3  # ← was 0.5
+    transform_timeout: 0.2      # ← was 0.5
+    tf_buffer_duration: 30.0    # ← was 60.0 (less needed in sim)
+
+    # 5. Memory
+    stack_size_to_use: 40000000
+
+    # 6. Scan buffer
+    scan_buffer_size: 40
+    scan_buffer_max_scan_distance: 1.0
+
+    # 7. Map resolution — SIM: higher quality
+    resolution: 0.03            # ← was 0.05 (3cm/pixel)
+
+    # 8. Map update timing
+    map_update_interval: 0.3    # ← was 0.5
+
+    # 9. Quality gate
+    min_map_score: 0.6
+
+    # 10. Loop closure
+    do_loop_closure: true
+    loop_closure_search_radius: 8.0
+    loop_closure_minimum_confidence: 0.5
+    loop_match_max_distance: 0.8
+    loop_search_max_distance: 3.0
+    loop_match_min_chain_size: 10
+    loop_match_max_chain_size: 50
+
+    # 11. Scan matcher
+    use_scan_matching: true
+    use_scan_barycenter: true
+    minimum_travel_distance: 0.05
+    minimum_travel_heading: 0.1
